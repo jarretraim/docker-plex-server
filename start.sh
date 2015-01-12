@@ -1,7 +1,7 @@
 #! /bin/sh
 
 rm -rf /var/run/*
-rm -f "/config/Library/Application Support/Plex Media Server/plexmediaserver.pid"
+rm -f "/mnt/config/Library/Application Support/Plex Media Server/plexmediaserver.pid"
 
 mkdir -p /var/run/dbus
 chown messagebus:messagebus /var/run/dbus
@@ -12,7 +12,7 @@ sleep 1
 avahi-daemon -D
 sleep 1
 
-HOME=/config start_pms &
+HOME=/mnt/config start_pms &
 sleep 5
 
-tail -f /config/Library/Application\ Support/Plex\ Media\ Server/Logs/**/*.log
+tail -f /mnt/config/Library/Application\ Support/Plex\ Media\ Server/Logs/**/*.log
