@@ -14,7 +14,8 @@ RUN wget -q -O /tmp/plex-media-server.deb https://d094b47584b89614f59f-d7ec5dd44
 RUN dpkg -i /tmp/plex-media-server.deb
 
 VOLUME /mnt/config
-VOLUME /mnt/data
+VOLUME /mnt/local
+VOLUME /mnt/nas
 
 ADD ./start.sh /start.sh
 RUN chmod u+x  /start.sh
