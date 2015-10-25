@@ -3,9 +3,12 @@ MAINTAINER Jarret Raim <jarret@raim.io>
 
 # Assuming that the Ubuntu Trusty image is updated. 
 
+# To get rid of error messages like "debconf: unable to initialize frontend: Dialog":
+RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
+
 RUN apt-get -q update && apt-get install -qy --force-yes avahi-daemon avahi-utils
 ADD http://plex-current.raim.io/plexmediaserver_current_amd64.deb /plexmediaserver.deb
-RUN dkpg -i /plexmediaserver.deb
+RUN dpkg -i /plexmediaserver.deb
 RUN rm /plexmediaserver.deb
 
 VOLUME /config
